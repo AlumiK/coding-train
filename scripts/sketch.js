@@ -1,25 +1,24 @@
-let angle = 0;
 const size = 135;
-let cols;
-let rows;
+const cols = 5;
+const rows = 5;
 const diameter = size - 30;
+let angle = 0;
 let horizontal_circles = [];
 let vertical_circles = [];
 let curves = [];
-let horizontal_circle_colors = [];
-let vertical_circle_colors = [];
+let horizontal_circle_colors;
+let vertical_circle_colors;
 let curve_colors = [];
+let limit;
 
 
 function setup() {
-    createCanvas(810, 810);
+    createCanvas((cols + 1) * size, (rows + 1) * size);
     noFill();
     colorMode(HSB);
     textAlign(CENTER, CENTER);
     textSize(45);
-    cols = width / size - 1;
-    rows = height / size - 1;
-    calculateColors();
+    makeColors();
     makeCurves();
     makeHorizontalCircles();
     makeVerticalCircles();
@@ -27,31 +26,15 @@ function setup() {
 
 function draw() {
     background(0);
-    for (let circle of horizontal_circles) {
-        circle.next();
-        circle.show();
-    }
-    for (let circle of vertical_circles) {
-        circle.next();
-        circle.show();
-    }
-    for (let i = 0; i < cols; i++) {
-        for (let j = 0; j < rows; j++) {
-            let index = i * rows + j;
-            curves[index].addPoint(
-                horizontal_circles[i].getPosition(),
-                vertical_circles[j].getPosition()
-            );
-            curves[index].show();
-            curves[index].drawPoint();
-        }
-    }
-    increseAngle();
+    setLimit();
+    drawCircles();
+    drawCurves();
+    updateAngle();
 }
 
-function calculateColors() {
-    horizontal_circle_colors = calculateCircleColors(cols);
-    vertical_circle_colors = calculateCircleColors(rows);
+function makeColors() {
+    horizontal_circle_colors = makeCircleColors(cols);
+    vertical_circle_colors = makeCircleColors(rows);
     for (let i = 0; i < cols; i++) {
         for (let j = 0; j < rows; j++) {
             let mid_color = lerpColor(
@@ -68,7 +51,7 @@ function calculateColors() {
     }
 }
 
-function calculateCircleColors(count) {
+function makeCircleColors(count) {
     let hue_step = 360 / count;
     let circle_colors = [];
     for (let i = 1; i <= count; i++) {
@@ -98,6 +81,17 @@ function makeHorizontalCircles() {
     }
 }
 
+function setLimit() {
+    let last_horizontal_circle = horizontal_circles[horizontal_circles.length - 1];
+    let last_vertical_circle = vertical_circles[vertical_circles.length - 1];
+    last_horizontal_circle.update();
+    last_vertical_circle.update();
+    limit = createVector(
+        last_horizontal_circle.getValue(),
+        last_vertical_circle.getValue()
+    );
+}
+
 function makeVerticalCircles() {
     for (let i = 0; i < rows; i++) {
         let center_x = size / 2;
@@ -113,7 +107,29 @@ function makeVerticalCircles() {
     }
 }
 
-function increseAngle() {
+function drawCircles() {
+    for (let circle of horizontal_circles) {
+        circle.show();
+    }
+    for (let circle of vertical_circles) {
+        circle.show();
+    }
+}
+
+function drawCurves() {
+    for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
+            let index = i * rows + j;
+            curves[index].addPoint(
+                horizontal_circles[i].getValue(),
+                vertical_circles[j].getValue()
+            );
+            curves[index].show();
+        }
+    }
+}
+
+function updateAngle() {
     angle -= 0.01;
     if (angle < -TWO_PI) {
         angle = 0;

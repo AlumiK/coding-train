@@ -14,6 +14,28 @@ class Circle {
         );
     }
 
+    getValue() {
+        if (this.type === HORIZONTAL) {
+            return this.p.x;
+        }
+        return this.p.y;
+    }
+
+    show() {
+        this.update();
+        this.drawCircle();
+        this.drawLine();
+        this.drawPoint();
+        this.drawSpeed();
+    }
+
+    update() {
+        this.p = createVector(
+            (this.diameter / 2.0) * cos(angle * this.speed - HALF_PI) + this.center.x,
+            (this.diameter / 2.0) * sin(angle * this.speed - HALF_PI) + this.center.y
+        );
+    }
+
     drawCircle() {
         stroke(this.color);
         strokeWeight(4);
@@ -21,12 +43,12 @@ class Circle {
     }
 
     drawLine() {
-        stroke(255, 0.1);
+        stroke(255, 0.2);
         strokeWeight(2);
         if (this.type === HORIZONTAL) {
-            line(this.p.x, 0, this.p.x, height);
+            line(this.p.x, this.p.y, this.p.x, limit.y);
         } else {
-            line(0, this.p.y, width, this.p.y);
+            line(this.p.x, this.p.y, limit.x, this.p.y);
         }
     }
 
@@ -41,26 +63,5 @@ class Circle {
         fill(255);
         text(this.speed, this.center.x, this.center.y);
         noFill();
-    }
-
-    next() {
-        this.p = createVector(
-            (this.diameter / 2.0) * cos(angle * this.speed - HALF_PI) + this.center.x,
-            (this.diameter / 2.0) * sin(angle * this.speed - HALF_PI) + this.center.y
-        );
-    }
-
-    getPosition() {
-        if (this.type === HORIZONTAL) {
-            return this.p.x;
-        }
-        return this.p.y;
-    }
-
-    show() {
-        this.drawCircle();
-        this.drawLine();
-        this.drawPoint();
-        this.drawSpeed();
     }
 }

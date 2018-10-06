@@ -8,11 +8,8 @@ class Curve {
         this.path.push(createVector(x, y));
     }
 
-    drawPoint() {
-        stroke(255);
-        strokeWeight(6);
-        let current_point = this.path[this.path.length - 1];
-        point(current_point.x, current_point.y);
+    reset() {
+        this.path = [];
     }
 
     show() {
@@ -23,9 +20,13 @@ class Curve {
             vertex(p.x, p.y);
         }
         endShape();
+        this.drawPoint();
     }
 
-    reset() {
-        this.path = [];
+    drawPoint() {
+        stroke(255);
+        strokeWeight(6);
+        let current_point = this.path[this.path.length - 1];
+        point(current_point.x, current_point.y);
     }
 }
