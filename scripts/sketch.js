@@ -54,10 +54,15 @@ function calculateColors() {
     vertical_circle_colors = calculateCircleColors(rows);
     for (let i = 0; i < cols; i++) {
         for (let j = 0; j < rows; j++) {
-            curve_colors.push(lerpColor(
+            let mid_color = lerpColor(
                 horizontal_circle_colors[i],
                 vertical_circle_colors[j],
                 0.5
+            );
+            curve_colors.push(color(
+                hue(mid_color),
+                50,
+                100
             ));
         }
     }
