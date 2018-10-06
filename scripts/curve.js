@@ -1,5 +1,6 @@
 class Curve {
-    constructor() {
+    constructor(color) {
+        this.color = color;
         this.path = [];
     }
 
@@ -15,7 +16,7 @@ class Curve {
     }
 
     show() {
-        stroke(255);
+        stroke(this.color);
         strokeWeight(2);
         beginShape();
         for (let p of this.path) {

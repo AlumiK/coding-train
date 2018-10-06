@@ -21,8 +21,8 @@ class Circle {
     }
 
     drawLine() {
-        stroke(255, 80);
-        strokeWeight(1);
+        stroke(255, 0.1);
+        strokeWeight(2);
         if (this.type === HORIZONTAL) {
             line(this.p.x, 0, this.p.x, height);
         } else {
@@ -34,6 +34,13 @@ class Circle {
         stroke(255);
         strokeWeight(12);
         point(this.p.x, this.p.y);
+    }
+
+    drawSpeed() {
+        noStroke();
+        fill(255);
+        text(this.speed, this.center.x, this.center.y);
+        noFill();
     }
 
     next() {
@@ -54,5 +61,6 @@ class Circle {
         this.drawCircle();
         this.drawLine();
         this.drawPoint();
+        this.drawSpeed();
     }
 }
