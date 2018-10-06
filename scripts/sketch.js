@@ -109,7 +109,7 @@ function makeVerticalCircles() {
 }
 
 function increseAngle() {
-    angle -= 0.007;
+    angle -= 0.01;
     if (angle < -TWO_PI) {
         angle = 0;
         for (let curve of curves) {
