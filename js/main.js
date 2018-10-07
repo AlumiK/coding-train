@@ -87,8 +87,8 @@ function setLimit() {
     last_horizontal_circle.update();
     last_vertical_circle.update();
     limit = createVector(
-        last_horizontal_circle.getValue(),
-        last_vertical_circle.getValue()
+        last_horizontal_circle.val,
+        last_vertical_circle.val
     );
 }
 
@@ -121,8 +121,8 @@ function drawCurves() {
         for (let j = 0; j < rows; j++) {
             let index = i * rows + j;
             curves[index].addPoint(
-                horizontal_circles[i].getValue(),
-                vertical_circles[j].getValue()
+                horizontal_circles[i].val,
+                vertical_circles[j].val
             );
             curves[index].show();
         }

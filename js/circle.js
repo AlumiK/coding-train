@@ -14,7 +14,7 @@ class Circle {
         );
     }
 
-    getValue() {
+    get val() {
         if (this.type === HORIZONTAL) {
             return this.p.x;
         }
