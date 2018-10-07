@@ -81,17 +81,6 @@ function makeHorizontalCircles() {
     }
 }
 
-function setLimit() {
-    let last_horizontal_circle = horizontal_circles[horizontal_circles.length - 1];
-    let last_vertical_circle = vertical_circles[vertical_circles.length - 1];
-    last_horizontal_circle.update();
-    last_vertical_circle.update();
-    limit = createVector(
-        last_horizontal_circle.val,
-        last_vertical_circle.val
-    );
-}
-
 function makeVerticalCircles() {
     for (let i = 0; i < rows; i++) {
         let center_x = size / 2;
@@ -105,6 +94,17 @@ function makeVerticalCircles() {
             vertical_circle_colors[i]
         ));
     }
+}
+
+function setLimit() {
+    let last_horizontal_circle = horizontal_circles[horizontal_circles.length - 1];
+    let last_vertical_circle = vertical_circles[vertical_circles.length - 1];
+    last_horizontal_circle.update();
+    last_vertical_circle.update();
+    limit = createVector(
+        last_horizontal_circle.val,
+        last_vertical_circle.val
+    );
 }
 
 function drawCircles() {
