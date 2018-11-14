@@ -4,4 +4,4 @@
 
 ## 演示网站
 
-[GitHub Page](https://alumik.github.io/lissajous-curve-p5js/)
+[Lissajous 曲线](https://alumik.github.io/lissajous-curve-p5js/)
