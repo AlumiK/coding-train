@@ -3,7 +3,6 @@ import processing.core.*;
 
 public class RubiksCube extends PApplet {
     private Cube mCube;
-    private Move mCurrentMove;
 
     public static void main(String[] args) {
         PApplet.main("RubiksCube");
@@ -24,58 +23,53 @@ public class RubiksCube extends PApplet {
     @Override
     public void draw() {
         background(Constants.BG_COLOR);
-        if (mCurrentMove != null) {
-            mCurrentMove.update();
+        if (mCube.isMoving() || mCube.isShuffling()) {
+            mCube.update();
         }
-        mCube.show(mCurrentMove);
+        mCube.show();
     }
 
     @Override
     public void keyPressed() {
-        if (mCurrentMove == null || !mCurrentMove.isRunning()) {
+        if (!mCube.isMoving() && !mCube.isShuffling()) {
             switch (key) {
                 case 'u':
-                    makeMove(0, -1, 0, 1);
+                    mCube.move(0, -1, 0, 1);
                     break;
                 case 'U':
-                    makeMove(0, -1, 0, -1);
+                    mCube.move(0, -1, 0, -1);
                     break;
                 case 'd':
-                    makeMove(0, 1, 0, -1);
+                    mCube.move(0, 1, 0, -1);
                     break;
                 case 'D':
-                    makeMove(0, 1, 0, 1);
+                    mCube.move(0, 1, 0, 1);
                     break;
                 case 'l':
-                    makeMove(-1, 0, 0, 1);
+                    mCube.move(-1, 0, 0, 1);
                     break;
                 case 'L':
-                    makeMove(-1, 0, 0, -1);
+                    mCube.move(-1, 0, 0, -1);
                     break;
                 case 'r':
-                    makeMove(1, 0, 0, -1);
+                    mCube.move(1, 0, 0, -1);
                     break;
                 case 'R':
-                    makeMove(1, 0, 0, 1);
+                    mCube.move(1, 0, 0, 1);
                     break;
                 case 'f':
-                    makeMove(0, 0, 1, -1);
+                    mCube.move(0, 0, 1, -1);
                     break;
                 case 'F':
-                    makeMove(0, 0, 1, 1);
+                    mCube.move(0, 0, 1, 1);
                     break;
                 case 'b':
-                    makeMove(0, 0, -1, 1);
+                    mCube.move(0, 0, -1, 1);
                     break;
                 case 'B':
-                    makeMove(0, 0, -1, -1);
+                    mCube.move(0, 0, -1, -1);
                     break;
             }
         }
-    }
-
-    private void makeMove(int x, int y, int z, int dir) {
-        mCurrentMove = new Move(mCube, x, y, z, dir, Constants.SPEED);
-        mCurrentMove.start();
     }
 }

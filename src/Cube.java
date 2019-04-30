@@ -3,10 +3,13 @@ import processing.core.*;
 class Cube {
     private PApplet mSketch;
     private Cubie[] mCubies;
+    private boolean mShuffling;
+    private Move mMove;
 
     Cube(PApplet sketch) {
         mSketch = sketch;
         mCubies = new Cubie[27];
+        mShuffling = false;
         int index = 0;
         for (int x = -1; x <= 1; x++) {
             for (int y = -1; y <= 1; y++) {
@@ -18,18 +21,18 @@ class Cube {
         }
     }
 
-    void show(Move move) {
+    void show() {
         for (Cubie cubie : mCubies) {
             mSketch.pushMatrix();
-            if (move != null && move.isRunning()) {
-                PVector movePos = move.getPos();
+            if (mMove != null && mMove.isRunning()) {
+                PVector movePos = mMove.getPos();
                 PVector cubiePos = cubie.getPos();
                 if (movePos.x != 0 && movePos.x == cubiePos.x) {
-                    mSketch.rotateX(move.getAngle());
+                    mSketch.rotateX(mMove.getAngle());
                 } else if (movePos.y != 0 && movePos.y == cubiePos.y) {
-                    mSketch.rotateY(move.getAngle());
+                    mSketch.rotateY(mMove.getAngle());
                 } else if (movePos.z != 0 && movePos.z == cubiePos.z) {
-                    mSketch.rotateZ(move.getAngle());
+                    mSketch.rotateZ(mMove.getAngle());
                 }
             }
             cubie.show();
@@ -37,7 +40,7 @@ class Cube {
         }
     }
 
-    void applyMove(Move move) {
+    void applyRotation(Move move) {
         PVector movePos = move.getPos();
         for (Cubie cubie : mCubies) {
             PVector cubiePos = cubie.getPos();
@@ -49,5 +52,30 @@ class Cube {
                 cubie.rotateZ(move.getDir());
             }
         }
+    }
+
+    void move(int x, int y, int z, int dir) {
+        mMove = new Move(this, x, y, z, dir, Constants.SPEED);
+        mMove.start();
+    }
+
+    boolean isMoving() {
+        return mMove != null && mMove.isRunning();
+    }
+
+    boolean isShuffling() {
+        return mShuffling;
+    }
+
+    void startShuffle() {
+        mShuffling = true;
+    }
+
+    void shuffle() {
+
+    }
+
+    void update() {
+        mMove.update();
     }
 }

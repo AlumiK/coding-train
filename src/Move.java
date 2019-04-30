@@ -25,7 +25,7 @@ class Move {
             mAngle += mDir * mSpeed;
             if (PApplet.abs(mAngle) > PConstants.HALF_PI) {
                 mRunning = false;
-                mCube.applyMove(this);
+                mCube.applyRotation(this);
             }
         }
     }
