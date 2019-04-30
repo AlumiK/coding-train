@@ -69,7 +69,6 @@ class Cube {
     }
 
     void update() {
-        mMove.update();
         if (mShuffling && !isMoving()) {
             if (mShuffleSteps < Constants.SHUFFLE_STEPS) {
                 makeMove(Constants.ALL_MOVES[PApplet.floor(mSketch.random(Constants.ALL_MOVES.length))]);
@@ -78,6 +77,7 @@ class Cube {
                 mShuffling = false;
             }
         }
+        mMove.update();
     }
 
     void makeMove(char key) {
