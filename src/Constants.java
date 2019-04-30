@@ -14,5 +14,4 @@ class Constants {
     static final int COLOR_BACK = 0xFF0000FF;
     static final int COLOR_FRONT = 0xFF00FF00;
     static final char[] ALL_MOVES = {'u', 'U', 'd', 'D', 'l', 'L', 'r', 'R', 'b', 'B', 'f', 'F'};
-    static final int SHUFFLE_STEPS = 50;
 }

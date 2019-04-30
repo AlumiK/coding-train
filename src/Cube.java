@@ -4,7 +4,6 @@ class Cube {
     private PApplet mSketch;
     private Cubie[] mCubies;
     private boolean mShuffling;
-    private int mShuffleSteps;
     private Move mMove;
 
     Cube(PApplet sketch) {
@@ -64,18 +63,12 @@ class Cube {
     }
 
     void shuffle() {
-        mShuffling = true;
-        mShuffleSteps = 0;
+        mShuffling = !mShuffling;
     }
 
     void update() {
         if (mShuffling && !isMoving()) {
-            if (mShuffleSteps < Constants.SHUFFLE_STEPS) {
-                makeMove(Constants.ALL_MOVES[PApplet.floor(mSketch.random(Constants.ALL_MOVES.length))]);
-                mShuffleSteps++;
-            } else {
-                mShuffling = false;
-            }
+            makeMove(Constants.ALL_MOVES[PApplet.floor(mSketch.random(Constants.ALL_MOVES.length))]);
         }
         mMove.update();
     }
