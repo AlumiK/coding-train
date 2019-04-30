@@ -38,7 +38,7 @@ class Face {
         float angle = dir * PConstants.HALF_PI;
         PVector normal = new PVector();
         normal.y = PApplet.round(mNormal.y * PApplet.cos(angle) - mNormal.z * PApplet.sin(angle));
-        normal.z = PApplet.round(mNormal.y * PApplet.sin(angle) - mNormal.z * PApplet.cos(angle));
+        normal.z = PApplet.round(mNormal.y * PApplet.sin(angle) + mNormal.z * PApplet.cos(angle));
         normal.x = PApplet.round(mNormal.x);
         mNormal = normal;
     }
@@ -46,8 +46,8 @@ class Face {
     void rotateY(int dir) {
         float angle = dir * PConstants.HALF_PI;
         PVector normal = new PVector();
-        normal.x = PApplet.round(mNormal.x * PApplet.cos(angle) - mNormal.z * PApplet.sin(angle));
-        normal.z = PApplet.round(mNormal.x * PApplet.sin(angle) - mNormal.z * PApplet.cos(angle));
+        normal.x = PApplet.round(mNormal.x * PApplet.cos(angle) + mNormal.z * PApplet.sin(angle));
+        normal.z = PApplet.round(-mNormal.x * PApplet.sin(angle) + mNormal.z * PApplet.cos(angle));
         normal.y = PApplet.round(mNormal.y);
         mNormal = normal;
     }

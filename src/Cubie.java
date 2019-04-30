@@ -71,7 +71,7 @@ class Cubie {
 
     void rotateY(int dir) {
         PMatrix2D matrix = new PMatrix2D();
-        matrix.rotate(dir * PConstants.HALF_PI);
+        matrix.rotate(-dir * PConstants.HALF_PI);
         matrix.translate(mPos.x, mPos.z);
         for (Face face : mFaces) {
             face.rotateY(dir);

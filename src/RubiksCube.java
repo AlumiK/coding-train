@@ -12,6 +12,7 @@ public class RubiksCube extends PApplet {
     @Override
     public void settings() {
         size(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, P3D);
+        smooth(8);
     }
 
     @Override
@@ -34,16 +35,16 @@ public class RubiksCube extends PApplet {
         if (mCurrentMove == null || !mCurrentMove.isRunning()) {
             switch (key) {
                 case 'u':
-                    makeMove(0, 1, 0, 1);
-                    break;
-                case 'U':
-                    makeMove(0, 1, 0, -1);
-                    break;
-                case 'd':
                     makeMove(0, -1, 0, 1);
                     break;
-                case 'D':
+                case 'U':
                     makeMove(0, -1, 0, -1);
+                    break;
+                case 'd':
+                    makeMove(0, 1, 0, -1);
+                    break;
+                case 'D':
+                    makeMove(0, 1, 0, 1);
                     break;
                 case 'l':
                     makeMove(-1, 0, 0, 1);
@@ -52,16 +53,16 @@ public class RubiksCube extends PApplet {
                     makeMove(-1, 0, 0, -1);
                     break;
                 case 'r':
-                    makeMove(1, 0, 0, 1);
-                    break;
-                case 'R':
                     makeMove(1, 0, 0, -1);
                     break;
+                case 'R':
+                    makeMove(1, 0, 0, 1);
+                    break;
                 case 'f':
-                    makeMove(0, 0, 1, 1);
+                    makeMove(0, 0, 1, -1);
                     break;
                 case 'F':
-                    makeMove(0, 0, 1, -1);
+                    makeMove(0, 0, 1, 1);
                     break;
                 case 'b':
                     makeMove(0, 0, -1, 1);
