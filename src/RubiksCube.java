@@ -31,45 +31,10 @@ public class RubiksCube extends PApplet {
 
     @Override
     public void keyPressed() {
-        if (!mCube.isMoving() && !mCube.isShuffling()) {
-            switch (key) {
-                case 'u':
-                    mCube.move(0, -1, 0, 1);
-                    break;
-                case 'U':
-                    mCube.move(0, -1, 0, -1);
-                    break;
-                case 'd':
-                    mCube.move(0, 1, 0, -1);
-                    break;
-                case 'D':
-                    mCube.move(0, 1, 0, 1);
-                    break;
-                case 'l':
-                    mCube.move(-1, 0, 0, 1);
-                    break;
-                case 'L':
-                    mCube.move(-1, 0, 0, -1);
-                    break;
-                case 'r':
-                    mCube.move(1, 0, 0, -1);
-                    break;
-                case 'R':
-                    mCube.move(1, 0, 0, 1);
-                    break;
-                case 'f':
-                    mCube.move(0, 0, 1, -1);
-                    break;
-                case 'F':
-                    mCube.move(0, 0, 1, 1);
-                    break;
-                case 'b':
-                    mCube.move(0, 0, -1, 1);
-                    break;
-                case 'B':
-                    mCube.move(0, 0, -1, -1);
-                    break;
-            }
+        if (key == ' ') {
+            mCube.shuffle();
+        } else if (!mCube.isMoving() && !mCube.isShuffling()) {
+            mCube.makeMove(key);
         }
     }
 }
