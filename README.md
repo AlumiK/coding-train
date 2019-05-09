@@ -1,6 +1,6 @@
 # 三阶魔方
 
-项目基于 [Processing](https://processing.org/) 语言制作。
+项目基于 [Processing](https://processing.org/) 制作。
 
 ## 操作说明
 
