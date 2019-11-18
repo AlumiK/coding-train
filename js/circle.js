@@ -2,6 +2,7 @@ const HORIZONTAL = true;
 const VERTICAL = false;
 
 class Circle {
+
     constructor(x, y, diameter, speed, type, color) {
         this.center = createVector(x, y);
         this.diameter = diameter;
