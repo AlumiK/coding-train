@@ -1,8 +1,7 @@
 package cn.alumik.rubikscube;
 
 class Constants {
-    static final float BOX_SIZE = 50;
-    static final float BOX_RADIUS = 5;
+
 
     static final int COLOR_BASE = 0;
     static final int COLOR_UP = 0xFFFFFFFF;

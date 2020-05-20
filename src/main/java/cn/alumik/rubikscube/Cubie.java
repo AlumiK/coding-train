@@ -5,6 +5,10 @@ import processing.core.*;
 import java.util.ArrayList;
 
 class Cubie {
+
+    static final float SIZE = 50;
+    static final float RADIUS = 5;
+
     private PApplet mSketch;
     private PMatrix3D mMatrix;
     private PVector mPos;
@@ -13,7 +17,7 @@ class Cubie {
     Cubie(PApplet sketch, int x, int y, int z) {
         mSketch = sketch;
         mMatrix = new PMatrix3D();
-        mMatrix.translate(x * Constants.BOX_SIZE, y * Constants.BOX_SIZE, z * Constants.BOX_SIZE);
+        mMatrix.translate(x * SIZE, y * SIZE, z * SIZE);
         mPos = new PVector(x, y, z);
 
         mFaces = new ArrayList<>();
@@ -54,7 +58,7 @@ class Cubie {
         mSketch.noStroke();
         mSketch.pushMatrix();
         mSketch.applyMatrix(mMatrix);
-        mSketch.box(Constants.BOX_SIZE - (float) 0.01);
+        mSketch.box(SIZE - (float) 0.01);
         for (Face face : mFaces) {
             face.show();
         }
@@ -97,7 +101,7 @@ class Cubie {
 
     private void update(int x, int y, int z) {
         mMatrix.reset();
-        mMatrix.translate(x * Constants.BOX_SIZE, y * Constants.BOX_SIZE, z * Constants.BOX_SIZE);
+        mMatrix.translate(x * SIZE, y * SIZE, z * SIZE);
         mPos = new PVector(x, y, z);
     }
 }
