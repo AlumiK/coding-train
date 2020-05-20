@@ -3,21 +3,19 @@ package cn.alumik.rubikscube;
 import processing.core.*;
 
 class Cube {
-    private PApplet mSketch;
-    private Cubie[] mCubies;
+
+    final private PApplet mSketch;
+    final private Cubie[] mCubies = new Cubie[27];
     private boolean mShuffling;
     private Move mMove;
 
     Cube(PApplet sketch) {
         mSketch = sketch;
-        mCubies = new Cubie[27];
-        mShuffling = false;
         int index = 0;
-        for (int x = -1; x <= 1; x++) {
-            for (int y = -1; y <= 1; y++) {
-                for (int z = -1; z <= 1; z++) {
-                    mCubies[index] = new Cubie(mSketch, x, y, z);
-                    index++;
+        for (int x = -1; x <= 1; ++x) {
+            for (int y = -1; y <= 1; ++y) {
+                for (int z = -1; z <= 1; ++z) {
+                    mCubies[index++] = new Cubie(mSketch, x, y, z);
                 }
             }
         }
@@ -26,7 +24,7 @@ class Cube {
     void show() {
         for (Cubie cubie : mCubies) {
             mSketch.pushMatrix();
-            if (mMove != null && mMove.isRunning()) {
+            if (isMoving()) {
                 PVector movePos = mMove.getPos();
                 PVector cubiePos = cubie.getPos();
                 if (movePos.x != 0 && movePos.x == cubiePos.x) {
@@ -71,7 +69,7 @@ class Cube {
     void update() {
         if (isMoving() || isShuffling()) {
             if (mShuffling && !isMoving()) {
-                move(Constants.ALL_MOVES[PApplet.floor(mSketch.random(Constants.ALL_MOVES.length))]);
+                move(Move.ALL_MOVES[(int) mSketch.random(Move.ALL_MOVES.length)]);
             }
             mMove.update();
         }
@@ -80,46 +78,41 @@ class Cube {
     void move(char key) {
         switch (key) {
             case 'u':
-                _move(0, -1, 0, 1);
+                mMove = new Move(this, 0, -1, 0, 1);
                 break;
             case 'U':
-                _move(0, -1, 0, -1);
+                mMove = new Move(this, 0, -1, 0, -1);
                 break;
             case 'd':
-                _move(0, 1, 0, -1);
+                mMove = new Move(this, 0, 1, 0, -1);
                 break;
             case 'D':
-                _move(0, 1, 0, 1);
+                mMove = new Move(this, 0, 1, 0, 1);
                 break;
             case 'l':
-                _move(-1, 0, 0, 1);
+                mMove = new Move(this, -1, 0, 0, 1);
                 break;
             case 'L':
-                _move(-1, 0, 0, -1);
+                mMove = new Move(this, -1, 0, 0, -1);
                 break;
             case 'r':
-                _move(1, 0, 0, -1);
+                mMove = new Move(this, 1, 0, 0, -1);
                 break;
             case 'R':
-                _move(1, 0, 0, 1);
+                mMove = new Move(this, 1, 0, 0, 1);
                 break;
             case 'f':
-                _move(0, 0, 1, -1);
+                mMove = new Move(this, 0, 0, 1, -1);
                 break;
             case 'F':
-                _move(0, 0, 1, 1);
+                mMove = new Move(this, 0, 0, 1, 1);
                 break;
             case 'b':
-                _move(0, 0, -1, 1);
+                mMove = new Move(this, 0, 0, -1, 1);
                 break;
             case 'B':
-                _move(0, 0, -1, -1);
+                mMove = new Move(this, 0, 0, -1, -1);
                 break;
         }
-    }
-
-    private void _move(int x, int y, int z, int dir) {
-        mMove = new Move(this, x, y, z, dir, Constants.SPEED);
-        mMove.start();
     }
 }

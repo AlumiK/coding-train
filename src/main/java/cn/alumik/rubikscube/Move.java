@@ -3,18 +3,20 @@ package cn.alumik.rubikscube;
 import processing.core.*;
 
 class Move {
+    static final char[] ALL_MOVES = {'u', 'U', 'd', 'D', 'l', 'L', 'r', 'R', 'b', 'B', 'f', 'F'};
+    static final float SPEED = (float) 0.1;
+
     private PVector mPos;
     private int mDir;
-    private boolean mRunning;
+    private boolean mRunning = true;
     private float mSpeed;
     private float mAngle;
     private Cube mCube;
 
-    Move(Cube cube, int x, int y, int z, int dir, float speed) {
+    Move(Cube cube, int x, int y, int z, int dir) {
         mPos = new PVector(x, y, z);
         mDir = dir;
-        mRunning = false;
-        mSpeed = speed;
+        mSpeed = SPEED;
         mCube = cube;
     }
 
