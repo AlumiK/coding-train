@@ -4,30 +4,33 @@ import peasy.*;
 import processing.core.*;
 
 public class RubiksCube extends PApplet {
-    private Cube mCube;
+
+    static final int SCREEN_WIDTH = 600;
+    static final int SCREEN_HEIGHT = 600;
+    static final float CAM_DISTANCE = 400;
+    static final int BG_COLOR = 51;
+
+    final private Cube mCube = new Cube(this);
 
     public static void main(String[] args) {
-        PApplet.main("cn.alumik.rubikscube.RubiksCube");
+        PApplet.main(RubiksCube.class);
     }
 
     @Override
     public void settings() {
-        size(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, P3D);
+        size(SCREEN_WIDTH, SCREEN_HEIGHT, P3D);
         smooth(8);
     }
 
     @Override
     public void setup() {
-        new PeasyCam(this, Constants.CAM_DISTANCE);
-        mCube = new Cube(this);
+        new PeasyCam(this, CAM_DISTANCE);
     }
 
     @Override
     public void draw() {
-        background(Constants.BG_COLOR);
-        if (mCube.isMoving() || mCube.isShuffling()) {
-            mCube.update();
-        }
+        background(BG_COLOR);
+        mCube.update();
         mCube.show();
     }
 
@@ -36,7 +39,7 @@ public class RubiksCube extends PApplet {
         if (key == ' ') {
             mCube.shuffle();
         } else if (!mCube.isMoving() && !mCube.isShuffling()) {
-            mCube.makeMove(key);
+            mCube.move(key);
         }
     }
 }

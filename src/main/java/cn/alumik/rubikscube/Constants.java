@@ -3,11 +3,7 @@ package cn.alumik.rubikscube;
 class Constants {
     static final float BOX_SIZE = 50;
     static final float BOX_RADIUS = 5;
-    static final int SCREEN_WIDTH = 600;
-    static final int SCREEN_HEIGHT = 600;
-    static final float CAM_DISTANCE = 400;
     static final float SPEED = (float) 0.1;
-    static final int BG_COLOR = 51;
     static final int COLOR_BASE = 0;
     static final int COLOR_UP = 0xFFFFFFFF;
     static final int COLOR_DOWN = 0xFFFFFF00;

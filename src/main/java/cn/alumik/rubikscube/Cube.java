@@ -69,54 +69,56 @@ class Cube {
     }
 
     void update() {
-        if (mShuffling && !isMoving()) {
-            makeMove(Constants.ALL_MOVES[PApplet.floor(mSketch.random(Constants.ALL_MOVES.length))]);
+        if (isMoving() || isShuffling()) {
+            if (mShuffling && !isMoving()) {
+                move(Constants.ALL_MOVES[PApplet.floor(mSketch.random(Constants.ALL_MOVES.length))]);
+            }
+            mMove.update();
         }
-        mMove.update();
     }
 
-    void makeMove(char key) {
+    void move(char key) {
         switch (key) {
             case 'u':
-                move(0, -1, 0, 1);
+                _move(0, -1, 0, 1);
                 break;
             case 'U':
-                move(0, -1, 0, -1);
+                _move(0, -1, 0, -1);
                 break;
             case 'd':
-                move(0, 1, 0, -1);
+                _move(0, 1, 0, -1);
                 break;
             case 'D':
-                move(0, 1, 0, 1);
+                _move(0, 1, 0, 1);
                 break;
             case 'l':
-                move(-1, 0, 0, 1);
+                _move(-1, 0, 0, 1);
                 break;
             case 'L':
-                move(-1, 0, 0, -1);
+                _move(-1, 0, 0, -1);
                 break;
             case 'r':
-                move(1, 0, 0, -1);
+                _move(1, 0, 0, -1);
                 break;
             case 'R':
-                move(1, 0, 0, 1);
+                _move(1, 0, 0, 1);
                 break;
             case 'f':
-                move(0, 0, 1, -1);
+                _move(0, 0, 1, -1);
                 break;
             case 'F':
-                move(0, 0, 1, 1);
+                _move(0, 0, 1, 1);
                 break;
             case 'b':
-                move(0, 0, -1, 1);
+                _move(0, 0, -1, 1);
                 break;
             case 'B':
-                move(0, 0, -1, -1);
+                _move(0, 0, -1, -1);
                 break;
         }
     }
 
-    private void move(int x, int y, int z, int dir) {
+    private void _move(int x, int y, int z, int dir) {
         mMove = new Move(this, x, y, z, dir, Constants.SPEED);
         mMove.start();
     }
