@@ -9,56 +9,54 @@ class Cubie {
     static final float SIZE = 50;
     static final float RADIUS = 5;
 
-    private PApplet mSketch;
-    private PMatrix3D mMatrix;
+    final private PApplet mSketch;
+    final private PMatrix3D mMatrix = new PMatrix3D();
+    final private ArrayList<Face> mFaces;
     private PVector mPos;
-    private ArrayList<Face> mFaces;
 
     Cubie(PApplet sketch, int x, int y, int z) {
         mSketch = sketch;
-        mMatrix = new PMatrix3D();
-        mMatrix.translate(x * SIZE, y * SIZE, z * SIZE);
-        mPos = new PVector(x, y, z);
+        update(x, y, z);
 
         mFaces = new ArrayList<>();
         if (mPos.x == -1) {
-            mFaces.add(new Face(mSketch, new PVector(-1, 0, 0), Constants.COLOR_LEFT));
-            mFaces.add(new Face(mSketch, new PVector(1, 0, 0), Constants.COLOR_BASE));
+            mFaces.add(new Face(mSketch, new PVector(-1, 0, 0), Face.COLOR_LEFT));
+            mFaces.add(new Face(mSketch, new PVector(1, 0, 0), Face.COLOR_BASE));
         } else if (mPos.x == 1) {
-            mFaces.add(new Face(mSketch, new PVector(1, 0, 0), Constants.COLOR_RIGHT));
-            mFaces.add(new Face(mSketch, new PVector(-1, 0, 0), Constants.COLOR_BASE));
+            mFaces.add(new Face(mSketch, new PVector(1, 0, 0), Face.COLOR_RIGHT));
+            mFaces.add(new Face(mSketch, new PVector(-1, 0, 0), Face.COLOR_BASE));
         } else {
-            mFaces.add(new Face(mSketch, new PVector(1, 0, 0), Constants.COLOR_BASE));
-            mFaces.add(new Face(mSketch, new PVector(-1, 0, 0), Constants.COLOR_BASE));
+            mFaces.add(new Face(mSketch, new PVector(1, 0, 0), Face.COLOR_BASE));
+            mFaces.add(new Face(mSketch, new PVector(-1, 0, 0), Face.COLOR_BASE));
         }
         if (mPos.y == -1) {
-            mFaces.add(new Face(mSketch, new PVector(0, -1, 0), Constants.COLOR_UP));
-            mFaces.add(new Face(mSketch, new PVector(0, 1, 0), Constants.COLOR_BASE));
+            mFaces.add(new Face(mSketch, new PVector(0, -1, 0), Face.COLOR_UP));
+            mFaces.add(new Face(mSketch, new PVector(0, 1, 0), Face.COLOR_BASE));
         } else if (mPos.y == 1) {
-            mFaces.add(new Face(mSketch, new PVector(0, 1, 0), Constants.COLOR_DOWN));
-            mFaces.add(new Face(mSketch, new PVector(0, -1, 0), Constants.COLOR_BASE));
+            mFaces.add(new Face(mSketch, new PVector(0, 1, 0), Face.COLOR_DOWN));
+            mFaces.add(new Face(mSketch, new PVector(0, -1, 0), Face.COLOR_BASE));
         } else {
-            mFaces.add(new Face(mSketch, new PVector(0, 1, 0), Constants.COLOR_BASE));
-            mFaces.add(new Face(mSketch, new PVector(0, -1, 0), Constants.COLOR_BASE));
+            mFaces.add(new Face(mSketch, new PVector(0, 1, 0), Face.COLOR_BASE));
+            mFaces.add(new Face(mSketch, new PVector(0, -1, 0), Face.COLOR_BASE));
         }
         if (mPos.z == -1) {
-            mFaces.add(new Face(mSketch, new PVector(0, 0, -1), Constants.COLOR_BACK));
-            mFaces.add(new Face(mSketch, new PVector(0, 0, 1), Constants.COLOR_BASE));
+            mFaces.add(new Face(mSketch, new PVector(0, 0, -1), Face.COLOR_BACK));
+            mFaces.add(new Face(mSketch, new PVector(0, 0, 1), Face.COLOR_BASE));
         } else if (mPos.z == 1) {
-            mFaces.add(new Face(mSketch, new PVector(0, 0, 1), Constants.COLOR_FRONT));
-            mFaces.add(new Face(mSketch, new PVector(0, 0, -1), Constants.COLOR_BASE));
+            mFaces.add(new Face(mSketch, new PVector(0, 0, 1), Face.COLOR_FRONT));
+            mFaces.add(new Face(mSketch, new PVector(0, 0, -1), Face.COLOR_BASE));
         } else {
-            mFaces.add(new Face(mSketch, new PVector(0, 0, 1), Constants.COLOR_BASE));
-            mFaces.add(new Face(mSketch, new PVector(0, 0, -1), Constants.COLOR_BASE));
+            mFaces.add(new Face(mSketch, new PVector(0, 0, 1), Face.COLOR_BASE));
+            mFaces.add(new Face(mSketch, new PVector(0, 0, -1), Face.COLOR_BASE));
         }
     }
 
     void show() {
-        mSketch.fill(Constants.COLOR_BASE);
+        mSketch.fill(Face.COLOR_BASE);
         mSketch.noStroke();
         mSketch.pushMatrix();
         mSketch.applyMatrix(mMatrix);
-        mSketch.box(SIZE - (float) 0.01);
+        mSketch.box(SIZE - 0.01f);
         for (Face face : mFaces) {
             face.show();
         }
