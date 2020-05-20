@@ -2,6 +2,8 @@
 
 项目基于 [Processing](https://processing.org/) 制作。
 
+执行 `mvn package` 可生成可执行 jar 文件。
+
 ## 操作说明
 
 使用空格键打乱魔方。
