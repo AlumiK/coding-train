@@ -3,30 +3,25 @@ package cn.alumik.rubikscube;
 import processing.core.*;
 
 class Move {
-    static final char[] ALL_MOVES = {'u', 'U', 'd', 'D', 'l', 'L', 'r', 'R', 'b', 'B', 'f', 'F'};
-    static final float SPEED = (float) 0.1;
 
-    private PVector mPos;
-    private int mDir;
+    static final char[] ALL_MOVES = {'u', 'U', 'd', 'D', 'l', 'L', 'r', 'R', 'b', 'B', 'f', 'F'};
+    static final float SPEED = 0.1f;
+
+    final private Cube mCube;
+    final private PVector mPos;
+    final private int mDir;
     private boolean mRunning = true;
-    private float mSpeed;
     private float mAngle;
-    private Cube mCube;
 
     Move(Cube cube, int x, int y, int z, int dir) {
+        mCube = cube;
         mPos = new PVector(x, y, z);
         mDir = dir;
-        mSpeed = SPEED;
-        mCube = cube;
-    }
-
-    void start() {
-        mRunning = true;
     }
 
     void update() {
         if (mRunning) {
-            mAngle += mDir * mSpeed;
+            mAngle += mDir * SPEED;
             if (PApplet.abs(mAngle) > PConstants.HALF_PI) {
                 mRunning = false;
                 mCube.applyRotation(this);
