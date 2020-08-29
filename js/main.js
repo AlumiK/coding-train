@@ -17,7 +17,7 @@ function setup() {
     noFill();
     colorMode(HSB);
     textAlign(CENTER, CENTER);
-    textSize(45);
+    textSize(35);
     makeColors();
     makeCurves();
     makeHorizontalCircles();

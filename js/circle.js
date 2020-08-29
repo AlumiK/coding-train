@@ -62,7 +62,7 @@ class Circle {
     drawSpeed() {
         noStroke();
         fill(255);
-        text(this.speed, this.center.x, this.center.y);
+        text(this.speed, this.center.x, this.center.y + 4);
         noFill();
     }
 }
