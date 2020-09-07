@@ -2,6 +2,14 @@
 
 The Rubik's Cube is a 3-D combination puzzle invented in 1974 by Hungarian sculptor and professor of architecture Ernő Rubik. Originally called the Magic Cube, the puzzle was licensed by Rubik to be sold by Ideal Toy Corp. in 1980 via businessman Tibor Laczi and Seven Towns founder Tom Kremer.
 
+## The Coding Train Video Links
+
+[Coding Challenge #142.1: Rubik's Cube Part 1](https://youtu.be/9PGfL4t-uqE)
+
+[Coding Challenge #142.2: Rubik's Cube Part 2](https://youtu.be/EGmVulED_4M)
+
+[Coding Challenge #142.3: Rubik's Cube Part 3](https://youtu.be/8U2gsbNe1Uo)
+
 ## Instructions
 
 Press `SPACE` to scramble the cube. press `SPACE` again to stop the scramble process.
