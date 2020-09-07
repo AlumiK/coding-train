@@ -1,24 +1,24 @@
-# 三阶魔方
+# #142 Rubik's Cube
 
-项目基于 [Processing](https://processing.org/) 制作。
+The Rubik's Cube is a 3-D combination puzzle invented in 1974 by Hungarian sculptor and professor of architecture Ernő Rubik. Originally called the Magic Cube, the puzzle was licensed by Rubik to be sold by Ideal Toy Corp. in 1980 via businessman Tibor Laczi and Seven Towns founder Tom Kremer.
 
-## 操作说明
+## Instructions
 
-使用 `空格` 开始打乱魔方，再次按下 `空格` 停止打乱过程。
+Press `SPACE` to scramble the cube. press `SPACE` again to stop the scramble process.
 
-使用以下按键旋转魔方。
+Press the following keys to turn the cube.
 
-| 面颜色 | 方向 | 按键 |
+| Face | Direction | Key |
 | ----- | ----- | ----- |
-| 白色 | 顺时针 | `U` |
-| 白色 | 逆时针 | `u` |
-| 黄色 | 顺时针 | `D` |
-| 黄色 | 逆时针 | `d` |
-| 橙色 | 顺时针 | `L` |
-| 橙色 | 逆时针 | `l` |
-| 红色 | 顺时针 | `R` |
-| 红色 | 逆时针 | `r` |
-| 蓝色 | 顺时针 | `B` |
-| 蓝色 | 逆时针 | `b` |
-| 绿色 | 顺时针 | `F` |
-| 绿色 | 逆时针 | `f` |
+| White | Clockwise | `U` |
+| White | Counterclockwise | `u` |
+| Yellow | Clockwise | `D` |
+| Yellow | Counterclockwise | `d` |
+| Orange | Clockwise | `L` |
+| Orange | Counterclockwise | `l` |
+| Red | Clockwise | `R` |
+| Red | Counterclockwise | `r` |
+| Blue | Clockwise | `B` |
+| Blue | Counterclockwise | `b` |
+| Green | Clockwise | `F` |
+| Green | Counterclockwise | `f` |
