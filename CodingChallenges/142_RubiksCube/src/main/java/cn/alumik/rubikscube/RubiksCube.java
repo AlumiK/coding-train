@@ -25,6 +25,7 @@ public class RubiksCube extends PApplet {
     @Override
     public void setup() {
         new PeasyCam(this, CAM_DISTANCE);
+        surface.setTitle("Rubik's Cube");
     }
 
     @Override
