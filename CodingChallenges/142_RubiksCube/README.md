@@ -12,7 +12,7 @@ The Rubik's Cube is a 3-D combination puzzle invented in 1974 by Hungarian sculp
 
 ## Previews
 
-![The Rubik's Cube preview](https://raw.githubusercontent.com/AlumiK/github-playground/master/Pictures/coding-train/rubiks_cube_preview.png)
+![The Rubik's Cube preview](https://raw.githubusercontent.com/AlumiK/github-playground/main/ImageHost/coding-train/rubiks_cube_preview.png)
 
 ## Instructions
 
