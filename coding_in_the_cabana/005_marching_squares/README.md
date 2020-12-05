@@ -15,4 +15,4 @@ Typical applications include the contour lines on topographic maps or the genera
 
 ## Demo
 
-https://pages.alumik.cn/coding-train/CodingInTheCabana/5_MarchingSquares/
+https://pages.alumik.cn/coding-train/coding_in_the_cabana/005_marching_squares/

@@ -26,4 +26,4 @@ where ![0\leq \phi \leq {\frac {\pi }{2p}}](https://render.githubusercontent.com
 
 ## Demo
 
-https://pages.alumik.cn/coding-train/CodingChallenges/116_LissajousCurveTable/
+https://pages.alumik.cn/coding-train/coding_challenges/116_lissajous_curve_table/
